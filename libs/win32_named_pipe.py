@@ -118,7 +118,7 @@ class Win32Pipe(object):
             log.debug("Trying to create pipe with randomness %s",
                       hex(start))
             # Try a few variations on the name in case it's somehow taken
-            for i in xrange(1024):
+            for i in range(1024):
                 name = (pipe_prefix + (self.pipe_prefix or "") +
                         hex(start + i)[2:-1])
                 assert len(name) <= 256
@@ -211,7 +211,7 @@ class Win32Pipe(object):
                                        True):
                 raise ctypes.WinError(ctypes.get_last_error())
             assert read.value == count
-            return str(buf.value)
+            return buf.value
         finally:
             CloseHandle(overlapped.hEvent)
 
